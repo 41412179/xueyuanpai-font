@@ -67,6 +67,11 @@ export default {
 <style scoped>
 .quill-editor {
   height: 600px;
+  width: 1200px;
+  
+
+
+
 }
 </style>
 

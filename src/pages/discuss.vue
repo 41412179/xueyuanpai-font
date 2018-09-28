@@ -1,13 +1,17 @@
 <template>
 <div class="discuss-content">
-    <input id="myInput" type="text" v-model="title" placeholder="文章标题:请一句话概括文章" />
+    <div class="title-input-wrapper-class">
+        <input class="title-input-class" id="myInput" type="text" v-model="title" placeholder="文章标题:请一句话概括文章" />
+    </div>
     <div id="editorId">
         <q-editor @changeContent="changeContent" :content="content"></q-editor>
     </div>
-    <span>this is fen ge xian</span>
+    <span>这是一条分割线-------------------------</span>
 
-    <div id="btnId">
-        <button v-on:click='getUserInfoThenSubmit' size="large" style="width:110px; height:38px;" type="primary">发布</button>
+    
+    <div id="btnId" class="editor-btn-submit">
+        <button id="cancelBtn" v-on:click='cancel' size="large" style="width:110px; height:38px;" type="primary">取消</button>
+        <button id="sumitBtn" v-on:click='getUserInfoThenSubmit' size="large" style="width:110px; height:38px;" type="primary">发布</button>
     </div>
 </div>
 </template>
@@ -31,6 +35,9 @@ export default {
     QEditor
   },
   methods: {
+    cancel(){
+
+    },
     changeContent(content){
       this.content = content;
       console.log("parent content = " + content)
@@ -124,11 +131,38 @@ export default {
 </script>
 
 <style scoped>
-button {
+.title-input-wrapper-class{
+  position: relative;
+  width: 1223px;
+  height: 55px;
+  
+}
+
+.title-input-class{
+  position: absolute;
+  font-size: 30px;
+  width: 1223px;
+  height: 55px;
+  vertical-align:middel;
+}
+
+#cancelBtn{
+  position: relative;
+  top: 0%;
+  left: 58px;
+}
+#submitBtn {
+  /* float: right; */
+  position: relative;
+  top: 0%;
+  right: 50px;
   background-color: #00bc9b;
 }
-#myInput{
-  width: 100%;
-  height: 50px;
+
+input::-webkit-input-placeholder{
+    color: red;
+    font-size: 40px;
+    line-height: 50px;
 }
+
 </style>
